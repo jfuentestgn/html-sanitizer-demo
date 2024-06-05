@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Sanitizer Spring Boot Starter Test App</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH">
+</head>
+<body>
+
+<div class="container">
+
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a th:href="@{/test}" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+            <span class="fs-4">html-sanitizer-demo</span>
+        </a>
+    </header>
+
+    <main>
+        <h1 class="text-body-emphasis">HTML Sanitizer Spring Boot Starter Test App</h1>
+        <p class="fs-5 col-md-8">Simple web application to show <strong>html-sanitizer-spring-boot-starter</strong> usage.
+            Enter HTML content on textarea field to check how <code>@Sanitize</code> annotation filters input in your Controller</p>
+
+        <form method="post" th:action="@{/test}" action="#" id="theForm">
+            <div class="mb-3">
+                <label for="htmlContent" class="form-label">
+                    Enter content with HTML tags:
+                </label>
+                <textarea class="form-control" name="htmlContent" id="htmlContent" rows="10"></textarea>
+            </div>
+
+            <textarea class="htmlField" name="htmlDefault" id="htmlDefault" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlBlocks" id="htmlBlocks" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlFormatting" id="htmlFormatting" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlImages" id="htmlImages" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlLinks" id="htmlLinks" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlStyles" id="htmlStyles" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlTables" id="htmlTables" style="display: none"></textarea>
+            <textarea class="htmlField" name="htmlCustom" id="htmlCustom" style="display: none"></textarea>
+
+            <button type="submit" class="btn btn-success">Test!</button>
+        </form>
+
+    </main>
+
+</div>
+
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"></script>
+<script>
+    (function () {
+        const theForm = document.querySelector('#theForm')
+        theForm.addEventListener('submit', () => {
+            const htmlContent = document.querySelector('#htmlContent').value
+            document.querySelectorAll('.htmlField').forEach(ta => {
+                ta.value = htmlContent
+            })
+            return true
+        })
+    })();
+</script>
+</body>
+</html>

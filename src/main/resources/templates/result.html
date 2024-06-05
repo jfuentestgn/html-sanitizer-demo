@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHTML Sanitizer Spring Boot Starter Test App</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH">
+</head>
+<body>
+
+<div class="container">
+
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a th:href="@{/test}" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+            <span class="fs-4">html-sanitizer-demo</span>
+        </a>
+    </header>
+
+    <main>
+        <h1 class="text-body-emphasis">HTML Sanitizer Spring Boot Starter Test App</h1>
+        <p class="fs-5 col-md-8">Simple web application to show <strong>html-sanitizer-spring-boot-starter</strong> usage</p>
+
+        <h2>Results of applied annotations</h2>
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <th>User entered content</th>
+                <td th:text="${data.htmlContent}">htmlContent</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize</th>
+                <td th:text="${data.htmlDefault}">htmlDefault</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize("BLOCKS")</th>
+                <td th:text="${data.htmlBlocks}">htmlBlocks</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize("FORMATTING")</th>
+                <td th:text="${data.htmlFormatting}">htmlFormatting</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize("IMAGES")</th>
+                <td th:text="${data.htmlImages}">htmlImages</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize("LINKS")</th>
+                <td th:text="${data.htmlLinks}">htmlLinks</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize("STYLES")</th>
+                <td th:text="${data.htmlStyles}">htmlStyles</td>
+            </tr>
+
+            <tr>
+                <th>@Sanitize("TABLES")</th>
+                <td th:text="${data.htmlTables}">htmlTables</td>
+            </tr>
+            <tr>
+                <th>@Sanitize("CUSTOM")</th>
+                <td th:text="${data.htmlCustom}">htmlTables</td>
+            </tr>
+            <tr>
+                <th>Customized</th>
+                <td th:text="${customized}">customized</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </main>
+
+</div>
+
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"></script>
+</body>
+</html>
